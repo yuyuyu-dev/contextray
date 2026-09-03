@@ -1,7 +1,7 @@
 # ctxray — Launch Kit (v0.1.0)
 
 > 这里不是 README 的复述,是**发布动作清单 + 即拷即用的传播文案**。
-> 用法:按顺序执行,把 `https://github.com/USERNAME/ctxray`、`[NPM_PACKAGE]` 等占位符替换后直接发出。
+> 用法:按顺序执行,把 `https://github.com/yuyuyu-dev/ctxray`、`[NPM_PACKAGE]` 等占位符替换后直接发出。
 
 ---
 
@@ -125,7 +125,7 @@ commented and configurable) and the Codex format (beta — community-documented)
 配合 headroom / context-mem 这类压缩工具用:先体检,再对症下药。
 
 支持 Claude Code(已验证)+ Codex(beta)。
-一条命令:`npx ctxray scan` → https://github.com/USERNAME/ctxray
+一条命令:`npx ctxray scan` → https://github.com/yuyuyu-dev/ctxray
 ```
 
 ---
@@ -177,7 +177,7 @@ diagnosis is the upstream step everyone was missing.
 Claude Code: verified. Codex: beta. MIT. Try it:
 npx ctxray scan
 
-GitHub: https://github.com/USERNAME/ctxray (star if useful 🙏)
+GitHub: https://github.com/yuyuyu-dev/ctxray (star if useful 🙏)
 ```
 
 ---

@@ -10,7 +10,7 @@
 
 🌍 **语言 / Language**: [🇺🇸 English](README.md) · [🇨🇳 简体中文](README.zh-CN.md) · [➕ 参与翻译](docs/i18n.md)
 
-![CI](https://github.com/USERNAME/ctxray/actions/workflows/ci.yml/badge.svg) ![npm](https://img.shields.io/npm/v/ctxray) ![License](https://img.shields.io/npm/l/ctxray) ![Node](https://img.shields.io/badge/node-%3E%3D20-339933) ![Zero network](https://img.shields.io/badge/privacy-100%25%20local-10b981)
+![CI](https://github.com/yuyuyu-dev/ctxray/actions/workflows/ci.yml/badge.svg) ![npm](https://img.shields.io/npm/v/ctxray) ![License](https://img.shields.io/npm/l/ctxray) ![Node](https://img.shields.io/badge/node-%3E%3D20-339933) ![Zero network](https://img.shields.io/badge/privacy-100%25%20local-10b981)
 
 </div>
 
@@ -77,7 +77,7 @@ npx ctxray report --open
 
 想先试演示、不碰自己的数据?
 ```bash
-git clone https://github.com/USERNAME/ctxray && npm install && npm run demo
+git clone https://github.com/yuyuyu-dev/ctxray && npm install && npm run demo
 # → 生成 dist-demo/ctx-report.html(基于合成测试数据)
 ```
 

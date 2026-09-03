@@ -29,5 +29,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Runtime dependency footprint: `commander` only.
 - MIT license, Node >= 20.
 
-[0.1.0]: https://github.com/USERNAME/ctxray/releases/tag/v0.1.0
+[0.1.0]: https://github.com/yuyuyu-dev/ctxray/releases/tag/v0.1.0
 
