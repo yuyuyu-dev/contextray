@@ -38,6 +38,11 @@ Your coding agent burns tokens every day. Point it at your repo, and by lunch it
 
 You feel it in the lag. You see it in the bill. But nobody can tell you *where* it goes.
 
+And it's **not just money**. Every wasted token is wasted *attention*: a context flooded
+with tool noise makes the model slower, duller, and more likely to repeat the same mistake.
+Diagnose the waste and your agent doesn't just get cheaper — **it gets faster, sharper,
+and stops doing the same work twice.**
+
 > Compression tools (headroom, context-mem...) fix waste **after** it happens.
 > **contextray shows you where the waste is *first*** — it's the checkup that tells you
 > which treatment you actually need.
