@@ -1,0 +1,44 @@
+{
+  "name": "ctxray",
+  "version": "0.1.0",
+  "description": "Diagnostic CLI for AI coding agent context/token waste — the \"context carbon footprint\" health check for Claude Code & Codex.",
+  "type": "module",
+  "bin": {
+    "ctxray": "bin/ctxray.js"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build",
+    "demo": "tsx scripts/demo-report.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "ai",
+    "agent",
+    "tokens",
+    "context",
+    "cost",
+    "claude-code",
+    "codex"
+  ],
+  "dependencies": {
+    "commander": "^14.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "tsx": "^4.23.9",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}

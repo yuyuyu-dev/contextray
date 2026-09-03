@@ -1,0 +1,5 @@
+{"type":"session_meta","payload":{"id":"total-only-1","timestamp":"2026-08-02T10:00:00.000Z","cwd":"/home/dev/acme","cli_version":"0.100.0"}}
+{"type":"event_msg","payload":{"type":"token_count","info":{"total_token_usage":{"input_tokens":1000,"cached_input_tokens":100,"output_tokens":60}}}}
+{"type":"event_msg","payload":{"type":"token_count","info":{"total_token_usage":{"input_tokens":1600,"cached_input_tokens":200,"output_tokens":90}}}}
+{"type":"event_msg","payload":{"type":"token_count","info":{"total_token_usage":{"input_tokens":1500,"cached_input_tokens":150,"output_tokens":80}}}}
+{"type":"event_msg","payload":{"type":"token_count","info":{"total_token_usage":{"input_tokens":1800,"cached_input_tokens":250,"output_tokens":100}}}}

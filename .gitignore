@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.claude/
+# Local artifacts containing real session data
+ctx-report.html
+docs/report-preview.png
+dist-demo/
+# Keep a SANITIZED demo screenshot committable (generated from fixtures only)
+# Real-data report (kept local only)
+ctx-real.html
