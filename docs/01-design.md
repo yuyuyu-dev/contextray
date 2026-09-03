@@ -1,4 +1,4 @@
-# CtxRay — 项目设计开发文档
+# ContextRay — 项目设计开发文档
 
 > 一个诊断 AI 编码 Agent「上下文浪费」的 CLI 体检工具
 > 版本:v0.1(设计稿)· 日期:2026-08-06
@@ -7,7 +7,7 @@
 
 ## 1. 一句话定位
 
-**ctxray 是 AI 编码 Agent 的「上下文碳足迹体检报告」**:一条命令扫描本机会话记录,告诉用户每一轮对话的 token 花在哪、哪个工具在烧钱、配置是不是在浪费钱,并生成一张可分享的浪费体检报告。
+**contextray 是 AI 编码 Agent 的「上下文碳足迹体检报告」**:一条命令扫描本机会话记录,告诉用户每一轮对话的 token 花在哪、哪个工具在烧钱、配置是不是在浪费钱,并生成一张可分享的浪费体检报告。
 
 和压缩类工具(Headroom / context-mem 负责「事后省钱」)不同,我们做的是**诊断**(「钱为什么没了」),是所有省钱工具的上游入口。
 
@@ -21,7 +21,7 @@
 - 「省钱」类项目(`headroom` 压缩 92%、`context-mem` 压缩 99%、`MemWeave` 记忆分层)月增数万星,但**没有一个是先告诉你浪费在哪的**。
 
 ### 2.2 差异化
-| 维度 | 现有压缩/记忆工具 | ctxray |
+| 维度 | 现有压缩/记忆工具 | contextray |
 |---|---|---|
 | 角色 | 事后补救(压缩、记忆) | 事前诊断(体检) |
 | 与现有工具关系 | 竞争 | **互补**,是它们的入口 |
@@ -39,8 +39,8 @@
 **目标用户**:重度使用 Claude Code / Codex 的开发者、以及「AI 编码很贵很慢」的团队。
 
 **核心场景**:
-1. 月底想不通「这个月 API 账单怎么这么贵」→ `ctxray scan` 找到元凶。
-2. 想优化 CLAUDE.md / MCP 配置但不知道从哪下手 → `ctxray audit-config` 给出清单。
+1. 月底想不通「这个月 API 账单怎么这么贵」→ `contextray scan` 找到元凶。
+2. 想优化 CLAUDE.md / MCP 配置但不知道从哪下手 → `contextray audit-config` 给出清单。
 3. 团队管理 agent 成本 → 生成报告归档、对比优化前后。
 
 **非目标(刻意不做)**:
@@ -54,10 +54,10 @@
 ### 4.1 命令集(v1)
 
 ```
-ctxray scan [--agent claude|codex|auto] [--since N] [--project <slug>] [--json]
-ctxray report [--path <file.html>] [--open]
-ctxray audit-config [--config <CLAUDE.md>] [--mcp <config.json>]
-ctxray ls-sessions [--agent claude|codex] [--since N]
+contextray scan [--agent claude|codex|auto] [--since N] [--project <slug>] [--json]
+contextray report [--path <file.html>] [--open]
+contextray audit-config [--config <CLAUDE.md>] [--mcp <config.json>]
+contextray ls-sessions [--agent claude|codex] [--since N]
 ```
 
 | 命令 | 作用 |
@@ -82,7 +82,7 @@ report ──► 读快照 ──► 生成自包含 HTML(内联 SVG 图表,单�
 ### 4.3 终端摘要示例(传播钩子)
 
 ```
-╭─ CtxRay · 2026-07 月度体检 ─────────────────────────╮
+╭─ ContextRay · 2026-07 月度体检 ─────────────────────────╮
 │  Agent            Claude Code × 143 个会话                   │
 │  总 token         23.6M(input)/ 1.9M(output)                │
 │  估算成本         $86.20                                     │
@@ -96,7 +96,7 @@ report ──► 读快照 ──► 生成自包含 HTML(内联 SVG 图表,单�
 │  浪费评级            C-(比 63% 的同类配置更费)                │
 │  最大元凶            bash + read 高频循环,建议:...            │
 ╰─────────────────────────────────────────────────────────────╯
-  完整报告:ctxray report --open
+  完整报告:contextray report --open
 ```
 
 ---
@@ -139,21 +139,21 @@ report ──► 读快照 ──► 生成自包含 HTML(内联 SVG 图表,单�
 
 | 项 | 选择 | 理由 |
 |---|---|---|
-| 语言 | Node + TypeScript | `npx ctxray` 一条命令传播最好;本机 Node v25 |
+| 语言 | Node + TypeScript | `npx contextray` 一条命令传播最好;本机 Node v25 |
 | CLI | commander | 主流、稳定 |
 | token 计数 | **零依赖启发式**(CJK 每字符 1 token、其余每 4 字符 1 token) | 原计划 `js-tiktoken`,但实测本机其 import 会挂起(tsx/vitest worker 崩溃);启发式仅用于归因占比,误差不影响真实总额 |
 | 图表 | 手写内联 SVG | 报告单文件自包含,离线可开、可分享 |
 | 测试 | vitest | 配 fixture 会话文件做快照测试 |
-| 存储 | 单 JSON 快照文件 | 无需数据库,`~/.ctxray/snapshot.json` |
+| 存储 | 单 JSON 快照文件 | 无需数据库,`~/.contextray/snapshot.json` |
 
 > 注:`js-tiktoken` 对中文/代码的计数与真实模型 tokenizer 有偏差,但**总额以真实 `usage` 为准**,tiktoken 只用于把总额按组件占比分配,误差被吸收。这是设计关键点,见 6.4。
 
 ### 5.4 项目目录结构
 
 ```
-ctxray/
+contextray/
   package.json  tsconfig.json  README.md
-  bin/ctxray.js              # npm bin 入口
+  bin/contextray.js              # npm bin 入口
   src/
     cli.ts  config.ts  types.ts
     sources/  detect.ts  claude.ts  codex.ts  types.ts
@@ -286,7 +286,7 @@ type Block =
 ## 10. 发布与传播计划
 
 1. **内部验证**:用用户自己的 143 个会话跑通,截图「月度体检」作为传播素材。
-2. **社区首帖**:V2EX / 掘金发「我给我自己的 AI 助手做了个体检」+ 报告截图,引导 `npx ctxray scan`。
+2. **社区首帖**:V2EX / 掘金发「我给我自己的 AI 助手做了个体检」+ 报告截图,引导 `npx contextray scan`。
 3. **GitHub 发布**:README 首屏 = 一张报告图 + 一条命令;标注「本地优先 / 零侵入 / 100% 离线」。
 4. **借势**:README 关联 `headroom` / `context-mem`(互补声明),参与 Hacker News 讨论串。
 5. **后续钩子**:v2 匿名排行榜(社交对比)、支持 Gemini CLI(扩面)。
@@ -300,7 +300,7 @@ type Block =
 | 会话格式随版本变化(尤其 Codex,非官方文档) | 解析器容错:识别失败跳过该文件并提示;fixture 快照测试防回归 |
 | 赛道热,30 天内有竞品 | 快速出 MVP;差异化锚定「诊断+可分享报告」,不碰压缩 |
 | 评分算法被质疑「不科学」 | 阈值可配置、算法公开、README 写明口径 |
-| npm 包名被占 | `ctxray` 被占则用 `@ctxray/cli`;先查 npm |
+| npm 包名被占 | `contextray` 被占则用 `@contextray/cli`;先查 npm |
 | 中文/代码 token 近似误差 | 总额用真实 usage,近似只用于占比分配,误差不放大 |
 
 ---
@@ -311,13 +311,13 @@ type Block =
 
 | 里程碑 | 内容 | 验证 |
 |---|---|---|
-| **M0** 脚手架(0.5d) | package.json / tsconfig / bin 入口 / CLI 骨架 / vitest 就绪 | `ctxray --help` 可用;`npm test` 通过 |
+| **M0** 脚手架(0.5d) | package.json / tsconfig / bin 入口 / CLI 骨架 / vitest 就绪 | `contextray --help` 可用;`npm test` 通过 |
 | **M1** Claude 解析(1d) | `sources/claude.ts` + fixture(用户真实会话脱敏) | 单测:解析 fixture 后 turns/blocks 数量与预期一致 |
 | **M2** Codex 解析(1d) | `sources/codex.ts` + fixture(含 token_count 差分、旧格式容错) | 单测:差分累计 token 正确;旧格式跳过不崩 |
 | **M3** 计量与归因(1d) | tokens / pricing / breakdown / watescore | 单测:对已知 fixture 断言成本、占比、评分;核对 pricing 表 |
 | **M4** 报告(1.5d) | text.ts + html.ts + chart.ts | 对用户真实会话生成报告,浏览器离线打开核对图表 |
 | **M5** audit-config(0.5d) | CLAUDE.md / MCP 配置静态成本估算 | 单测:给定示例配置算出预期成本 |
-| **M6** 发布(1d) | 测试补全 / README / 示例图 / npm 发布流程 / 社区帖素材 | 全新环境 `npx ctxray scan` 走通全流程 |
+| **M6** 发布(1d) | 测试补全 / README / 示例图 / npm 发布流程 / 社区帖素材 | 全新环境 `npx contextray scan` 走通全流程 |
 
 ### 12.1 技术债与后续(v1 之后)
 - 支持 Gemini CLI / Cursor 会话格式。
@@ -328,7 +328,7 @@ type Block =
 
 ## 13. 待办 / 开放问题
 
-- [x] npm 包名 `ctxray` **已确认可用**(2026-08-06)。
-- [x] 仓库位置 `D:\heima\ctxray` **已确认**(git init 于 M0)。
+- [x] npm 包名 `contextray` **已确认可用**(2026-08-06)。
+- [x] 仓库位置 `D:\heima\contextray` **已确认**(git init 于 M0)。
 - [x] README **做多语言可切换(i18n)**,非 v1 优先项(M6 定稿,不急)。
 - [ ] M3 时核对主流模型实时价格(填默认值并标注可覆盖)。

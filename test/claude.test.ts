@@ -49,7 +49,7 @@ describe('parseClaudeSession', () => {
   });
 
   it('returns zero turns for a file with no assistant records', () => {
-    const dir = path.join(os.tmpdir(), `ctxray-empty-${Date.now()}`);
+    const dir = path.join(os.tmpdir(), `contextray-empty-${Date.now()}`);
     fs.mkdirSync(dir, { recursive: true });
     const file = path.join(dir, 'empty.jsonl');
     fs.writeFileSync(

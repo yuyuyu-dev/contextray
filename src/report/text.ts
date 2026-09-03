@@ -22,13 +22,13 @@ function fmt(n: number): string {
 
 export function renderSummary(bd: SessionBreakdown, agent: AgentId): string {
   if (bd.totalInput === 0 && bd.contentTokens === 0) {
-    return 'CtxRay · no session data to analyze\nRun `ctxray ls-sessions` to confirm sessions exist, then `ctxray scan`.';
+    return 'ContextRay · no session data to analyze\nRun `contextray ls-sessions` to confirm sessions exist, then `contextray scan`.';
   }
   const content = bd.contentTokens || 1;
   const ws = wasteScore(bd);
 
   const lines: string[] = [];
-  lines.push(`CtxRay · ${agent === 'claude' ? 'Claude Code' : 'Codex'} · ${bd.sessionCount} sessions`);
+  lines.push(`ContextRay · ${agent === 'claude' ? 'Claude Code' : 'Codex'} · ${bd.sessionCount} sessions`);
   lines.push('─'.repeat(48));
   lines.push(`tokens    input ${fmt(bd.totalInput)} · output ${fmt(bd.totalOutput)} · cache read ${fmt(bd.totalCacheRead)}`);
   lines.push(`cost      $${bd.totalCost.toFixed(2)} (approx, prices configurable)`);
@@ -78,10 +78,10 @@ export function renderShareCard(bd: SessionBreakdown, agent: AgentId): string {
   const lines: string[] = [];
   lines.push('');
   lines.push('─── copy & share your checkup ───');
-  lines.push(`🩻 CtxRay · ${agent === 'claude' ? 'Claude Code' : 'Codex'}`);
+  lines.push(`🩻 ContextRay · ${agent === 'claude' ? 'Claude Code' : 'Codex'}`);
   lines.push(`${GRADE_EMOJI[ws.grade]} waste score ${ws.score}/100 · grade ${ws.grade}`);
   lines.push(`top issue: ${ws.topIssue}`);
   lines.push(`$${bd.totalCost.toFixed(2)} · ${bd.sessionCount} sessions · ${fmt(bd.totalCacheRead)} cache read`);
-  lines.push('→ npx ctxray scan');
+  lines.push('→ npx contextray scan');
   return lines.join('\n');
 }

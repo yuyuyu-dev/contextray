@@ -53,7 +53,7 @@ describe('renderShareCard', () => {
     const card = renderShareCard(bd, 'claude');
     expect(card).toMatch(/waste score \d+\/100 · grade [A-F]/);
     expect(card).toContain('top issue:');
-    expect(card).toContain('npx ctxray scan');
+    expect(card).toContain('npx contextray scan');
     expect(card).toContain('$');
   });
 

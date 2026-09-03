@@ -37,14 +37,14 @@ describe('renderSummary empty-data guard', () => {
     bd.toolResultTokens = 60;
     bd.userTextTokens = 40;
     const out = renderSummary(bd, 'claude');
-    expect(out).toContain('CtxRay');
+    expect(out).toContain('ContextRay');
     expect(out).toContain('grade');
   });
 });
 
 describe('auditConfig resilience', () => {
   it('does not crash on a corrupt MCP config and reports the issue', () => {
-    const dir = path.join(os.tmpdir(), `ctxray-mcp-${Date.now()}`);
+    const dir = path.join(os.tmpdir(), `contextray-mcp-${Date.now()}`);
     fs.mkdirSync(dir, { recursive: true });
     const mcp = path.join(dir, 'bad.json');
     fs.writeFileSync(mcp, '{ this is not valid json');
@@ -56,7 +56,7 @@ describe('auditConfig resilience', () => {
   });
 
   it('parses a valid MCP config normally', () => {
-    const dir = path.join(os.tmpdir(), `ctxray-mcp2-${Date.now()}`);
+    const dir = path.join(os.tmpdir(), `contextray-mcp2-${Date.now()}`);
     fs.mkdirSync(dir, { recursive: true });
     const mcp = path.join(dir, 'good.json');
     fs.writeFileSync(mcp, JSON.stringify({ mcpServers: { a: {}, b: {}, c: {} } }));

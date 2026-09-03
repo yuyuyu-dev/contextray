@@ -1,10 +1,10 @@
 {
-  "name": "ctxray",
+  "name": "contextray",
   "version": "0.1.0",
   "description": "Diagnostic CLI for AI coding agent context/token waste — the \"context carbon footprint\" health check for Claude Code & Codex.",
   "type": "module",
   "bin": {
-    "ctxray": "bin/ctxray.js"
+    "contextray": "bin/contextray.js"
   },
   "files": [
     "dist",

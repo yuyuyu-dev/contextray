@@ -1,16 +1,16 @@
 <div align="center">
 
-# ctxray
+# contextray
 
 **AI 编码 Agent 的「上下文碳足迹」体检工具。**
 
 一条命令回答你的账单回答不了的问题:**我的 token 和钱,到底花在了哪里?**
 
-`npx ctxray scan` → 找出浪费。`npx ctxray report --open` → 用报告说服你的团队。
+`npx contextray scan` → 找出浪费。`npx contextray report --open` → 用报告说服你的团队。
 
 🌍 **语言 / Language**: [🇺🇸 English](README.md) · [🇨🇳 简体中文](README.zh-CN.md) · [➕ 参与翻译](docs/i18n.md)
 
-![CI](https://github.com/yuyuyu-dev/ctxray/actions/workflows/ci.yml/badge.svg) ![npm](https://img.shields.io/npm/v/ctxray) ![License](https://img.shields.io/npm/l/ctxray) ![Node](https://img.shields.io/badge/node-%3E%3D20-339933) ![Zero network](https://img.shields.io/badge/privacy-100%25%20local-10b981)
+![CI](https://github.com/yuyuyu-dev/contextray/actions/workflows/ci.yml/badge.svg) ![npm](https://img.shields.io/npm/v/contextray) ![License](https://img.shields.io/npm/l/contextray) ![Node](https://img.shields.io/badge/node-%3E%3D20-339933) ![Zero network](https://img.shields.io/badge/privacy-100%25%20local-10b981)
 
 </div>
 
@@ -28,14 +28,14 @@
 你感受到卡顿,你看到账单。但没人能告诉你,钱到底**去哪了**。
 
 > 压缩类工具(headroom、context-mem...)做的是**事后**补救。
-> **ctxray 先告诉你浪费在哪**——它是体检,告诉你该上哪种治疗。
+> **contextray 先告诉你浪费在哪**——它是体检,告诉你该上哪种治疗。
 
 ## 亲自看一眼
 
 我自己机器上的真实输出(最近 30 天,23 个 Claude Code 会话):
 
 ```text
-CtxRay · Claude Code · 23 sessions
+ContextRay · Claude Code · 23 sessions
 ────────────────────────────────────────────────
 tokens    input 18.1M · output 4.3M · cache read 1.45B
 cost      $31.64 (approx, prices configurable)
@@ -57,27 +57,27 @@ suggestions
   - Same files read repeatedly: use a code-index (MCP) instead of raw reads.
 ```
 
-thinking 原始占比最大(54%),但它不一定是浪费——评分优先标出**可避免**的噪音(工具输出 / 重复读取 / 报错)。在你自己机器上跑 `npx ctxray scan`,数字同样直接来自本地 Claude Code / Codex 日志,绝无估算。
+thinking 原始占比最大(54%),但它不一定是浪费——评分优先标出**可避免**的噪音(工具输出 / 重复读取 / 报错)。在你自己机器上跑 `npx contextray scan`,数字同样直接来自本地 Claude Code / Codex 日志,绝无估算。
 
 真实扫描(23 个 Claude Code 会话)生成的 HTML 报告——自包含、离线可开、可分享:
 
-<p align="center"><img src="docs/preview.png" alt="CtxRay HTML 报告预览" width="720"></p>
+<p align="center"><img src="docs/preview.png" alt="ContextRay HTML 报告预览" width="720"></p>
 
 ## 快速开始
 
 ```bash
 # 1. 查看 token 和钱花在了哪(最近 14 天):
-npx ctxray scan
+npx contextray scan
 
 # 2. 生成可分享、离线可开的 HTML 报告:
-npx ctxray report --open
+npx contextray report --open
 ```
 
 仅此而已。只**在本地**读取会话文件——无需注册、无遥测、无网络请求。
 
 想先试演示、不碰自己的数据?
 ```bash
-git clone https://github.com/yuyuyu-dev/ctxray && npm install && npm run demo
+git clone https://github.com/yuyuyu-dev/contextray && npm install && npm run demo
 # → 生成 dist-demo/ctx-report.html(基于合成测试数据)
 ```
 
@@ -103,7 +103,7 @@ git clone https://github.com/yuyuyu-dev/ctxray && npm install && npm run demo
 
 ## 可分享的报告
 
-`ctxray report` 产出**单个 HTML 文件**,所有内容内联:
+`contextray report` 产出**单个 HTML 文件**,所有内容内联:
 
 - 总览卡片(input / output / cache / 成本 / 带等级徽章的 Waste Score),
 - 内容构成环形图 + 烧钱工具 Top 榜(柱状图),
@@ -118,9 +118,9 @@ git clone https://github.com/yuyuyu-dev/ctxray && npm install && npm run demo
 |---|---|---|
 | **ccusage** | 统计你**花了多少**(记账) | "好吧,是挺多——然后呢?" |
 | **headroom / context-mem** | 压缩上下文、**少花点**(治疗) | 你得先知道哪里臃肿才用得上 |
-| **ctxray** | 指出浪费**在哪**、打分、指向第一个修复动作(诊断) | "原来如此——67% 工具输出、这 3 个工具、这个文件读了 41 次。" |
+| **contextray** | 指出浪费**在哪**、打分、指向第一个修复动作(诊断) | "原来如此——67% 工具输出、这 3 个工具、这个文件读了 41 次。" |
 
-ctxray 和 ccusage **互补**:ccusage 回答"花了多少",ctxray 回答"花在哪、为什么"。两者共享同一份 JSONL 源文件。诊断是你整个省钱工具链的**上游入口**。
+contextray 和 ccusage **互补**:ccusage 回答"花了多少",contextray 回答"花在哪、为什么"。两者共享同一份 JSONL 源文件。诊断是你整个省钱工具链的**上游入口**。
 
 还没被打动?还有三个差异化:
 

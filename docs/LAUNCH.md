@@ -1,16 +1,16 @@
-# ctxray — Launch Kit (v0.1.0)
+# contextray — Launch Kit (v0.1.0)
 
 > 这里不是 README 的复述,是**发布动作清单 + 即拷即用的传播文案**。
-> 用法:按顺序执行,把 `https://github.com/yuyuyu-dev/ctxray`、`[NPM_PACKAGE]` 等占位符替换后直接发出。
+> 用法:按顺序执行,把 `https://github.com/yuyuyu-dev/contextray`、`[NPM_PACKAGE]` 等占位符替换后直接发出。
 
 ---
 
 ## 0. 发布前检查(半天,一次做完)
 
 - [ ] `git init` 后提交首个 commit(当前仓库还是零 commit 状态)。
-- [ ] 建 GitHub 仓库(建议名:`ctxray`),推上去,开 `Issues` + `Discussions`。
+- [ ] 建 GitHub 仓库(建议名:`contextray`),推上去,开 `Issues` + `Discussions`。
 - [ ] 跑 `npm run demo`,截图 `dist-demo/ctx-report.html` → 存为 `docs/preview.png` 并提交。
-- [ ] 跑 `npx ctxray scan` 截你自己机器的真实输出(这是最好的素材)。
+- [ ] 跑 `npx contextray scan` 截你自己机器的真实输出(这是最好的素材)。
 - [ ] 配 CI(GitHub Actions:node 20/22/24 × `npm test`)。
 - [ ] `npm publish`(注意:`prepublishOnly` 已自动 build)。
 - [ ] 在 README 顶部把 `git clone <repo>` 换成真实 URL。
@@ -33,7 +33,7 @@ v0.1.0 — The context carbon footprint health check for your AI coding agent
 Your coding agent re-reads the same files dozens of times, fills its context with
 JSON noise, loops on errors, and you pay for all of it. Nobody can tell you where.
 
-`npx ctxray scan` reads your local Claude Code / Codex session logs (never
+`npx contextray scan` reads your local Claude Code / Codex session logs (never
 leaves your machine, never modified, zero network in v1) and produces:
 
 - exact input/output/cache token totals straight from the agent's `usage` field,
@@ -45,13 +45,13 @@ leaves your machine, never modified, zero network in v1) and produces:
 `audit-config` also estimates the fixed per-turn cost of your CLAUDE.md + MCP
 servers — the toll you pay on every single model call.
 
-ccusage tells you *how much* you spent. ctxray tells you *where it went* and
+ccusage tells you *how much* you spent. contextray tells you *where it went* and
 *what to fix first*. They are complementary and read the same JSONL files.
 
 Supported: Claude Code (verified against real sessions) · Codex (beta).
 License: MIT. Node >= 20.
 
-Install: `npx ctxray scan`
+Install: `npx contextray scan`
 Docs: [README](README.md) · Demo: `npm run demo`
 ```
 
@@ -61,7 +61,7 @@ Docs: [README](README.md) · Demo: `npm run demo`
 
 **Title 候选**:
 ```
-Show HN: I built a health check that shows where your claude-code tokens go (npx ctxray scan)
+Show HN: I built a health check that shows where your claude-code tokens go (npx contextray scan)
 ```
 
 **Body**:
@@ -93,7 +93,7 @@ compression tools everyone recommends only work once you know what's bloated.
 Would love feedback, especially about the Waste Score thresholds (they're
 commented and configurable) and the Codex format (beta — community-documented).
 
-[repo] · `npx ctxray scan`
+[repo] · `npx contextray scan`
 ```
 
 ---
@@ -125,7 +125,7 @@ commented and configurable) and the Codex format (beta — community-documented)
 配合 headroom / context-mem 这类压缩工具用:先体检,再对症下药。
 
 支持 Claude Code(已验证)+ Codex(beta)。
-一条命令:`npx ctxray scan` → https://github.com/yuyuyu-dev/ctxray
+一条命令:`npx contextray scan` → https://github.com/yuyuyu-dev/contextray
 ```
 
 ---
@@ -175,9 +175,9 @@ HTML report you can email your team.
 diagnosis is the upstream step everyone was missing.
 
 Claude Code: verified. Codex: beta. MIT. Try it:
-npx ctxray scan
+npx contextray scan
 
-GitHub: https://github.com/yuyuyu-dev/ctxray (star if useful 🙏)
+GitHub: https://github.com/yuyuyu-dev/contextray (star if useful 🙏)
 ```
 
 ---
@@ -185,9 +185,9 @@ GitHub: https://github.com/yuyuyu-dev/ctxray (star if useful 🙏)
 ## 6. 其他可用钩子(按渠道选用)
 
 - **Reddit r/ClaudeAI / r/LocalLLaMA**:"PSA: you can see exactly what your Claude Code spent tokens on — I open-sourced the tool I used."
-- **Product Hunt**(可选):标题 "ctxray — See where your AI coding agent spends tokens";首图用真实 scan 截图;tagline 用 README 首句。
+- **Product Hunt**(可选):标题 "contextray — See where your AI coding agent spends tokens";首图用真实 scan 截图;tagline 用 README 首句。
 - **公众号 / 即刻 / 小红书**:直接改第 3/4 节的标题与开头,配上 `npm run demo` 生成的截图即可。
-- **行业 newsletter**:一句话投稿——"ctxray: the context carbon footprint health check for Claude Code & Codex; diagnose where tokens go before you optimize."
+- **行业 newsletter**:一句话投稿——"contextray: the context carbon footprint health check for Claude Code & Codex; diagnose where tokens go before you optimize."
 
 ---
 
@@ -214,4 +214,4 @@ GitHub: https://github.com/yuyuyu-dev/ctxray (star if useful 🙏)
 
 ## 9. 兜底心态
 
-爆款是概率事件,发布是能力事件。这一版的目标是:**让每个看到的人都想跑一次 `npx ctxray scan`,并且跑完愿意截图分享。** 只要做到这一条,star 和下载量只是结果。
+爆款是概率事件,发布是能力事件。这一版的目标是:**让每个看到的人都想跑一次 `npx contextray scan`,并且跑完愿意截图分享。** 只要做到这一条,star 和下载量只是结果。

@@ -26,7 +26,7 @@ const bd = analyzeSessions(sessions);
 console.log(renderSummary(bd, 'claude'));
 console.log('');
 console.log('-'.repeat(48));
-console.log('(demo data from test fixtures - run this on your own sessions with `npx ctxray scan`)');
+console.log('(demo data from test fixtures - run this on your own sessions with `npx contextray scan`)');
 
 const outDir = path.join(root, 'dist-demo');
 fs.mkdirSync(outDir, { recursive: true });

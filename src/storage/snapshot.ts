@@ -30,7 +30,7 @@ export function reportHash(bd: SessionBreakdown): string {
 }
 
 export function defaultSnapshotPath(home: string = os.homedir()): string {
-  return path.join(home, '.ctxray', 'snapshot.json');
+  return path.join(home, '.contextray', 'snapshot.json');
 }
 
 export function writeSnapshot(snapshot: Snapshot, filePath: string): void {

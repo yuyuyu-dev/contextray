@@ -26,7 +26,7 @@ function openInBrowser(filePath: string): void {
 const program = new Command();
 
 program
-  .name('ctxray')
+  .name('contextray')
   .description('AI coding agent "context carbon footprint" diagnostic CLI')
   .version(VERSION);
 
@@ -66,7 +66,7 @@ program
 
     if (!options.json) {
       console.error(
-        `ctxray: scanning ${files.length} ${agent} session file(s)${cutoff ? ` (last ${sinceDays}d)` : ' (all time)'}…`,
+        `contextray: scanning ${files.length} ${agent} session file(s)${cutoff ? ` (last ${sinceDays}d)` : ' (all time)'}…`,
       );
     }
 
@@ -90,7 +90,7 @@ program
     const breakdown = analyzeSessions(sessions);
     if (!options.json) {
       console.error(
-        `ctxray: parsed ${sessions.length} session(s) in ${Date.now() - t0}ms${failed ? `, ${failed} file(s) skipped` : ''}`,
+        `contextray: parsed ${sessions.length} session(s) in ${Date.now() - t0}ms${failed ? `, ${failed} file(s) skipped` : ''}`,
       );
     }
 
@@ -103,7 +103,7 @@ program
       }
     }
     if (unknown.size > 0) {
-      console.error(`ctxray: model(s) not in price table, billed at default (sonnet): ${[...unknown].join(', ')}`);
+      console.error(`contextray: model(s) not in price table, billed at default (sonnet): ${[...unknown].join(', ')}`);
     }
 
     if (sessions.length === 0) {
@@ -117,8 +117,8 @@ program
       };
       if (options.json) console.log(JSON.stringify(empty, null, 2));
       const where = agent === 'claude' ? '~/.claude/projects' : '~/.codex/sessions';
-      console.error(`ctxray: no ${agent} sessions found. Checked ${where}.`);
-      console.error('Run `ctxray ls-sessions` to inspect what is available.');
+      console.error(`contextray: no ${agent} sessions found. Checked ${where}.`);
+      console.error('Run `contextray ls-sessions` to inspect what is available.');
       process.exit(1);
     }
 
@@ -149,11 +149,11 @@ program
   .action(async (options: { path: string; open?: boolean }) => {
     const snapshot = readSnapshot(defaultSnapshotPath(os.homedir()));
     if (!snapshot) {
-      console.error('No snapshot found. Run `ctxray scan` first.');
+      console.error('No snapshot found. Run `contextray scan` first.');
       process.exit(1);
     }
     if (snapshot.sessionCount === 0) {
-      console.error('ctxray: snapshot has 0 sessions. Run `ctxray scan` again.');
+      console.error('contextray: snapshot has 0 sessions. Run `contextray scan` again.');
       process.exit(1);
     }
     const out = path.resolve(options.path);
@@ -176,11 +176,11 @@ program
     const mcpPath = options.mcp ?? path.join(home, '.claude.json');
     const result = auditConfig({ configPath, mcpPath, model: options.model });
     if (options.model && options.model !== 'default' && !isModelPriced(options.model)) {
-      console.error(`ctxray: model '${options.model}' not in price table, assuming sonnet pricing.`);
+      console.error(`contextray: model '${options.model}' not in price table, assuming sonnet pricing.`);
     }
 
     const lines: string[] = [];
-    lines.push(`CtxRay · config audit`);
+    lines.push(`ContextRay · config audit`);
     lines.push('─'.repeat(48));
     lines.push(`CLAUDE.md           ${result.configTokens.toLocaleString()} tokens (${result.configFilePath ? result.configFilePath : 'not found'})`);
     if (result.mcpServers.length > 0) {
