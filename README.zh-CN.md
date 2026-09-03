@@ -6,7 +6,17 @@
 
 一条命令回答你的账单回答不了的问题:**我的 token 和钱,到底花在了哪里?**
 
-`npx contextray scan` → 找出浪费。`npx contextray report --open` → 用报告说服你的团队。
+```bash
+npx contextray scan
+```
+
+**无需安装、无需注册、零网络请求——你的数据永远不出你的电脑。**
+
+查出浪费 → 生成报告 → 说服你的团队:
+
+```bash
+npx contextray report --open
+```
 
 🌍 **语言 / Language**: [🇺🇸 English](README.md) · [🇨🇳 简体中文](README.zh-CN.md) · [➕ 参与翻译](docs/i18n.md)
 

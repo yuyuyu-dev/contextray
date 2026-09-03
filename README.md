@@ -7,7 +7,17 @@
 One command answers the question your billing page can't:
 **where did my tokens — and my money — actually go?**
 
-`npx contextray scan` → find the waste. `npx contextray report --open` → prove it to your team.
+```bash
+npx contextray scan
+```
+
+**No install. No signup. No network. Your data never leaves your machine.**
+
+See the waste → fix it → prove it to your team:
+
+```bash
+npx contextray report --open
+```
 
 🌍 **Language**: [🇺🇸 English](README.md) · [🇨🇳 简体中文](README.zh-CN.md) · [➕ help translate](docs/i18n.md)
 
